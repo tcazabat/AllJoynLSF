@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: alljoyn.jar AllJoynLSFApi.jar 
+Main-Class: com.hager.alljoyn.sample.client.SampleLampClientApplication
