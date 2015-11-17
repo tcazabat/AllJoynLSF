@@ -71,6 +71,18 @@ public class AlljoynBusListener implements AboutListener {
         if (status != Status.OK) {
             return;
         }
+
+        status = this.bus.addMatch("sessionless='t'");
+        if (status != Status.OK) {
+            return;
+        }
+
+        lampHandler = new LampStateSignalHandler();
+
+        status = this.bus.registerSignalHandlers(lampHandler);
+        if (status != Status.OK) {
+            return;
+        }
     }
 
     public void closeBus() {
@@ -186,18 +198,5 @@ public class AlljoynBusListener implements AboutListener {
                 e.printStackTrace();
             }
         }
-
-        status = this.bus.addMatch("sessionless='t'");
-        if (status != Status.OK) {
-            return;
-        }
-
-        lampHandler = new LampStateSignalHandler();
-
-        status = this.bus.registerSignalHandlers(lampHandler);
-        if (status != Status.OK) {
-            return;
-        }
-
     }
 }
